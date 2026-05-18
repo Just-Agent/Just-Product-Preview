@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1",
+  "tool": "just-preview",
+  "version": "0.4.1",
+  "command": "thumbnail",
+  "generatedAt": "2026-05-18T00:00:00.000Z",
+  "source": {
+    "url": "https://example.com/just-preview-demo"
+  },
+  "output": {
+    "path": "outputs/cover.png",
+    "filename": "cover.png",
+    "format": "png"
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "metadata": {
+    "example": true,
+    "purpose": "README cover image"
+  }
+}

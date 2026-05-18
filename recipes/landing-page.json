@@ -1,0 +1,11 @@
+{
+  "url": "https://example.com",
+  "output": "outputs/landing-page-preview.mp4",
+  "viewport": "desktop",
+  "duration": 1,
+  "steps": [
+    { "type": "wait", "ms": 1000 },
+    { "type": "scroll", "to": 400, "duration": 1000 },
+    { "type": "wait", "ms": 500 }
+  ]
+}

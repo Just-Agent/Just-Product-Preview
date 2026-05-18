@@ -1,0 +1,10 @@
+{
+  "url": "https://example.com",
+  "output": "outputs/docs-site-preview.webm",
+  "viewport": "desktop",
+  "duration": 1,
+  "steps": [
+    { "type": "wait", "ms": 800 },
+    { "type": "scroll", "by": 800, "duration": 1200 }
+  ]
+}

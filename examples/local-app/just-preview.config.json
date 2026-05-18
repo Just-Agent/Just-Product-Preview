@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/just-preview.config.schema.json",
+  "defaults": {
+    "viewport": "desktop",
+    "waitUntil": "networkidle",
+    "waitForTimeout": 500,
+    "outputDir": "outputs",
+    "timeout": 30000,
+    "serveCommand": "node server.mjs",
+    "serveUrl": "http://127.0.0.1:4177",
+    "serveCwd": ".",
+    "serveTimeout": 30000,
+    "serveSilent": true
+  },
+  "thumbnail": {
+    "output": "outputs/local-app-cover.png"
+  },
+  "video": {
+    "output": "outputs/local-app-preview.mp4",
+    "duration": 5,
+    "autoScroll": true,
+    "scrollBy": 420,
+    "scrollIntervalMs": 900
+  },
+  "gif": {
+    "output": "outputs/local-app-preview.gif",
+    "duration": 4,
+    "gifFps": 12,
+    "gifWidth": 960
+  },
+  "recipe": {
+    "output": "outputs/local-app-recipe.mp4"
+  }
+}

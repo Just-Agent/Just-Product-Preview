@@ -1,0 +1,57 @@
+{
+  "name": "just-preview-monorepo",
+  "private": true,
+  "version": "0.4.1",
+  "description": "Monorepo-based Agent-native preview asset generation toolkit.",
+  "packageManager": "pnpm@10.33.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Just-Agent/Just-Product-Preview.git"
+  },
+  "keywords": [
+    "monorepo",
+    "agent-native",
+    "html2video",
+    "html2thumbnail",
+    "preview",
+    "playwright",
+    "ffmpeg",
+    "github-action"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "clean": "turbo clean && node scripts/clean.mjs",
+    "just-preview": "pnpm --filter @just-agent/preview-cli start",
+    "preview": "pnpm just-preview",
+    "doctor": "pnpm --filter @just-agent/preview-cli start doctor",
+    "devices": "pnpm --filter @just-agent/preview-cli start devices",
+    "validate:json": "node scripts/validate-json.mjs",
+    "release:check": "node scripts/check-release.mjs",
+    "validate": "pnpm validate:json && pnpm release:check && pnpm release:checklist",
+    "plan": "pnpm --filter @just-agent/preview-cli start plan video --config just-preview.config.example.json --json",
+    "manifest": "pnpm --filter @just-agent/preview-cli start plan video --config just-preview.config.example.json --manifest outputs/plan.manifest.json",
+    "smoke:local-app": "pnpm build && pnpm just-preview thumbnail --serve-command \"node server.mjs\" --serve-cwd examples/local-app --serve-url http://127.0.0.1:4177 --serve-silent --out outputs/local-app-smoke.png",
+    "publish:sample": "pnpm --filter @just-agent/preview-cli start publish --manifest examples/publish-workflow/manifests/cover.manifest.json,examples/publish-workflow/manifests/preview.manifest.json --format pr-comment --out outputs/sample-pr-comment.md",
+    "gallery:sample": "pnpm --filter @just-agent/preview-cli start publish --manifest examples/publish-workflow/manifests/cover.manifest.json,examples/publish-workflow/manifests/preview.manifest.json --format gallery --out outputs/sample-gallery.md",
+    "readme:sample": "pnpm --filter @just-agent/preview-cli start publish --manifest examples/publish-workflow/manifests/cover.manifest.json,examples/publish-workflow/manifests/preview.manifest.json --format readme --base-url ./outputs --out outputs/sample-readme-preview.md",
+    "smoke:local-html": "node scripts/smoke-local-html.mjs",
+    "smoke:publish": "node scripts/smoke-publish.mjs",
+    "smoke:action-inputs": "node scripts/smoke-action-inputs.mjs",
+    "smoke:release": "pnpm build && pnpm smoke:publish && pnpm smoke:action-inputs && pnpm smoke:local-html",
+    "release:checklist": "node scripts/check-release-checklist.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.19",
+    "turbo": "2.9.14",
+    "typescript": "5.9.3"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Just-Agent/Just-Product-Preview#readme",
+  "bugs": {
+    "url": "https://github.com/Just-Agent/Just-Product-Preview/issues"
+  }
+}

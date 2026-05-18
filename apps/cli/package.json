@@ -1,0 +1,57 @@
+{
+  "name": "@just-agent/preview-cli",
+  "version": "0.4.1",
+  "description": "Command line interface for Just-Preview.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "just-preview": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node ../../scripts/make-cli-executable.mjs dist/index.js",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node ../../scripts/run-node-tests.mjs dist",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@just-agent/html2thumbnail": "workspace:*",
+    "@just-agent/html2video": "workspace:*",
+    "@just-agent/preview-core": "workspace:*",
+    "@just-agent/preview-recipe": "workspace:*",
+    "@just-agent/preview-publisher": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "4.22.1"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Just-Agent/Just-Product-Preview#readme",
+  "bugs": {
+    "url": "https://github.com/Just-Agent/Just-Product-Preview/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Just-Agent/Just-Product-Preview.git",
+    "directory": "apps/cli"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "just-preview",
+    "preview",
+    "agent-native",
+    "monorepo",
+    "playwright",
+    "html2video",
+    "html2thumbnail",
+    "cli"
+  ]
+}

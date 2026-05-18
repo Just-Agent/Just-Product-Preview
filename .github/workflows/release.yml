@@ -1,0 +1,45 @@
+name: Release Check
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm validate:json
+      - run: pnpm release:check
+      - run: pnpm release:checklist
+      - run: pnpm exec playwright install chromium ffmpeg
+      - run: pnpm build
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm just-preview doctor
+      - run: pnpm just-preview validate --config just-preview.config.example.json recipes/landing-page.json
+      - run: pnpm just-preview plan video --config just-preview.config.example.json --manifest outputs/release-video-plan.json
+      - name: Generate smoke-test preview assets
+        run: |
+          pnpm just-preview thumbnail --file ./examples/local-html/index.html --out outputs/release-cover.png --manifest outputs/release-cover.manifest.json
+          pnpm just-preview video --file ./examples/local-html/index.html --out outputs/release-preview.webm --duration 2 --manifest outputs/release-video.manifest.json
+          pnpm just-preview thumbnail --serve-command "node server.mjs" --serve-cwd examples/local-app --serve-url http://127.0.0.1:4177 --serve-silent --out outputs/release-local-app-cover.png --manifest outputs/release-local-app-cover.manifest.json
+      - name: Generate release publish Markdown
+        run: |
+          pnpm just-preview publish --manifest "outputs/*.manifest.json" --format release-note --workflow-run-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --out outputs/release-preview.md
+          pnpm just-preview publish --manifest "outputs/*.manifest.json" --format gallery --out outputs/release-gallery.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: just-preview-release-smoke-assets
+          path: outputs/*

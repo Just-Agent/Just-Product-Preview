@@ -1,0 +1,10 @@
+{
+  "url": "https://example.com",
+  "output": "outputs/dashboard-cover.png",
+  "mode": "thumbnail",
+  "viewport": "wide",
+  "fullPage": false,
+  "steps": [
+    { "type": "wait", "ms": 1000 }
+  ]
+}

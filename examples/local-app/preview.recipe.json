@@ -1,0 +1,14 @@
+{
+  "serveCommand": "node server.mjs",
+  "serveUrl": "http://127.0.0.1:4177",
+  "serveSilent": true,
+  "output": "outputs/local-app-recipe.webm",
+  "viewport": "desktop",
+  "duration": 1,
+  "steps": [
+    { "type": "wait", "ms": 600 },
+    { "type": "scroll", "to": 680, "duration": 1000 },
+    { "type": "wait", "ms": 400 },
+    { "type": "scroll", "to": 0, "duration": 800 }
+  ]
+}

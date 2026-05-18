@@ -1,0 +1,13 @@
+{
+  "url": "http://localhost:3000",
+  "output": "outputs/preview.gif",
+  "viewport": "desktop",
+  "duration": 1,
+  "gifFps": 12,
+  "gifWidth": 960,
+  "steps": [
+    { "type": "wait", "ms": 1000 },
+    { "type": "scroll", "to": 500, "duration": 1000 },
+    { "type": "wait", "ms": 500 }
+  ]
+}

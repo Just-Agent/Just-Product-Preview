@@ -1,0 +1,12 @@
+{
+  "name": "just-preview-example-mobile-preview",
+  "version": "0.4.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "mkdir -p dist && echo mobile-preview example > dist/README.txt",
+    "typecheck": "echo mobile-preview typecheck",
+    "lint": "echo mobile-preview lint",
+    "test": "echo mobile-preview test"
+  }
+}

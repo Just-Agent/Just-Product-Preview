@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Just-Product-Preview workflow</title>
+  <desc id="desc">A workflow diagram showing local apps, URLs, and HTML files captured by the just-preview CLI into thumbnails, videos, GIFs, manifests, README snippets, PR comments, and galleries.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0B1020"/>
+      <stop offset="48%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#102A43"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#020617" flood-opacity="0.34"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" rx="34" fill="url(#bg)"/>
+  <circle cx="1018" cy="108" r="116" fill="#38BDF8" opacity="0.12"/>
+  <circle cx="160" cy="522" r="138" fill="#22C55E" opacity="0.10"/>
+
+  <g transform="translate(72 68)">
+    <text x="0" y="0" fill="#93C5FD" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">JUST-AGENT / JUST-PRODUCT-PREVIEW</text>
+    <text x="0" y="58" fill="#FFFFFF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="800">Preview what your Agent built.</text>
+    <text x="0" y="96" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">Turn local apps, URLs, and HTML into review-ready visual proof.</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="74" y="214" width="250" height="244" rx="22" fill="#F8FAFC"/>
+    <text x="102" y="254" fill="#0F172A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800">Inputs</text>
+    <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" fill="#334155">
+      <text x="102" y="302">Local frontend app</text>
+      <text x="102" y="342">URL or GitHub Pages</text>
+      <text x="102" y="382">Static HTML file</text>
+      <text x="102" y="422">Recipe script</text>
+    </g>
+
+    <rect x="474" y="184" width="252" height="304" rx="26" fill="#0F172A" stroke="#334155"/>
+    <rect x="504" y="226" width="192" height="34" rx="10" fill="url(#accent)"/>
+    <text x="522" y="249" fill="#04111F" font-family="Consolas, Menlo, monospace" font-size="18" font-weight="700">just-preview</text>
+    <text x="504" y="302" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="18">thumbnail</text>
+    <text x="504" y="340" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="18">video</text>
+    <text x="504" y="378" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="18">gif</text>
+    <text x="504" y="416" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="18">recipe</text>
+    <text x="504" y="454" fill="#E2E8F0" font-family="Consolas, Menlo, monospace" font-size="18">publish</text>
+
+    <rect x="876" y="214" width="250" height="244" rx="22" fill="#F8FAFC"/>
+    <text x="904" y="254" fill="#0F172A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800">Outputs</text>
+    <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" fill="#334155">
+      <text x="904" y="302">cover.png</text>
+      <text x="904" y="342">preview.mp4 / gif</text>
+      <text x="904" y="382">manifest.json</text>
+      <text x="904" y="422">README / PR Markdown</text>
+    </g>
+  </g>
+
+  <path d="M344 336 C382 336 416 336 454 336" stroke="#38BDF8" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M444 318 L466 336 L444 354" stroke="#38BDF8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M746 336 C784 336 818 336 856 336" stroke="#22C55E" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M846 318 L868 336 L846 354" stroke="#22C55E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <g transform="translate(74 522)" font-family="Inter, Segoe UI, Arial, sans-serif">
+    <rect width="1052" height="54" rx="16" fill="#020617" opacity="0.70"/>
+    <text x="24" y="35" fill="#CBD5E1" font-size="18">Agent workflow: build UI -> capture assets -> publish preview proof in README, pull requests, releases, and docs.</text>
+  </g>
+</svg>

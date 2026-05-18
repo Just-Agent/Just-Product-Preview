@@ -1,0 +1,11 @@
+{
+  "file": "examples/local-html/index.html",
+  "output": "outputs/recipe-demo.webm",
+  "viewport": "desktop",
+  "duration": 1,
+  "steps": [
+    { "type": "wait", "ms": 500 },
+    { "type": "click", "selector": "[data-preview='demo-button']" },
+    { "type": "wait", "ms": 500 }
+  ]
+}

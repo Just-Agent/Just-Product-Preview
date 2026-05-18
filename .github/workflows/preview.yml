@@ -1,0 +1,56 @@
+name: Generate Preview
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install chromium ffmpeg
+      - run: pnpm build
+      - run: pnpm just-preview doctor
+      - run: pnpm just-preview validate --config just-preview.config.example.json recipes/landing-page.json
+      - run: pnpm just-preview plan video --config just-preview.config.example.json --manifest outputs/video-plan.json
+      - name: Generate local HTML preview assets
+        run: |
+          pnpm just-preview thumbnail --file ./examples/local-html/index.html --out outputs/cover.png --manifest outputs/cover.manifest.json
+          pnpm just-preview video --file ./examples/local-html/index.html --out outputs/preview.webm --duration 2 --manifest outputs/video.manifest.json
+          pnpm just-preview gif --file ./examples/local-html/index.html --out outputs/preview.gif --duration 2 --gif-width 720 --manifest outputs/gif.manifest.json
+      - name: Generate served local app preview assets
+        run: |
+          pnpm just-preview thumbnail \
+            --serve-command "node server.mjs" \
+            --serve-cwd examples/local-app \
+            --serve-url http://127.0.0.1:4177 \
+            --serve-silent \
+            --out outputs/local-app-cover.png \
+            --manifest outputs/local-app-cover.manifest.json
+          pnpm just-preview video \
+            --serve-command "node server.mjs" \
+            --serve-cwd examples/local-app \
+            --serve-url http://127.0.0.1:4177 \
+            --serve-silent \
+            --out outputs/local-app-preview.webm \
+            --duration 3 \
+            --auto-scroll \
+            --manifest outputs/local-app-video.manifest.json
+      - name: Generate publish-ready Markdown
+        run: |
+          pnpm just-preview publish --manifest "outputs/*.manifest.json" --format pr-comment --repo "$GITHUB_REPOSITORY" --branch "$GITHUB_HEAD_REF" --sha "$GITHUB_SHA" --workflow-run-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --out outputs/pr-comment.md
+          pnpm just-preview publish --manifest "outputs/*.manifest.json" --format readme --base-url ./outputs --out outputs/readme-preview.md
+          pnpm just-preview publish --manifest "outputs/*.manifest.json" --format gallery --out outputs/preview-gallery.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: just-preview-artifacts
+          path: outputs/*

@@ -1,0 +1,13 @@
+{
+  "url": "http://localhost:3000",
+  "output": "outputs/pr-preview.webm",
+  "viewport": "desktop",
+  "duration": 1,
+  "steps": [
+    { "type": "wait", "ms": 600 },
+    { "type": "scroll", "to": 520, "duration": 900 },
+    { "type": "wait", "ms": 400 },
+    { "type": "screenshot", "output": "outputs/pr-midpoint.png", "fullPage": false },
+    { "type": "scroll", "to": 0, "duration": 700 }
+  ]
+}

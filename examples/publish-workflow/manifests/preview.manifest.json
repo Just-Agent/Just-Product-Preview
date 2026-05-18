@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1",
+  "tool": "just-preview",
+  "version": "0.4.1",
+  "command": "video",
+  "generatedAt": "2026-05-18T00:00:01.000Z",
+  "source": {
+    "url": "https://example.com/just-preview-demo"
+  },
+  "output": {
+    "path": "outputs/preview.mp4",
+    "filename": "preview.mp4",
+    "format": "mp4"
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "metadata": {
+    "example": true,
+    "purpose": "Product preview video"
+  }
+}

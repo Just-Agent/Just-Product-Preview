@@ -1,0 +1,14 @@
+{
+  "serveCommand": "pnpm dev",
+  "serveUrl": "http://localhost:5173",
+  "serveSilent": true,
+  "output": "outputs/local-app-preview.mp4",
+  "viewport": "desktop",
+  "duration": 1,
+  "steps": [
+    { "type": "wait", "ms": 800 },
+    { "type": "scroll", "to": 640, "duration": 1200 },
+    { "type": "wait", "ms": 500 },
+    { "type": "scroll", "to": 0, "duration": 900 }
+  ]
+}

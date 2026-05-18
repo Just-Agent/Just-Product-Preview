@@ -1,0 +1,11 @@
+{
+  "file": "./examples/configured-project/index.html",
+  "output": "outputs/configured-recipe.webm",
+  "viewport": "desktop",
+  "steps": [
+    { "type": "wait", "ms": 500 },
+    { "type": "scroll", "to": 480, "duration": 900 },
+    { "type": "click", "selector": "[data-preview='demo-button']" },
+    { "type": "wait", "ms": 500 }
+  ]
+}

@@ -1,0 +1,162 @@
+name: Just-Preview
+description: Generate HTML to Thumbnail, HTML to Video, GIF, recipe, manifest, and publish-ready Markdown preview artifacts.
+author: Just-Agent
+
+inputs:
+  command:
+    description: thumbnail, video, gif, recipe, plan, validate, or publish.
+    required: false
+    default: video
+  url:
+    description: URL to capture.
+    required: false
+  file:
+    description: Local HTML file to capture.
+    required: false
+  recipe:
+    description: Recipe path when command is recipe, plan recipe, or validate.
+    required: false
+  config:
+    description: Just-Preview config file path.
+    required: false
+  out:
+    description: Output path for capture or publish command. If omitted, Just-Preview chooses a command-aware default.
+    required: false
+    default: ""
+  manifest:
+    description: Manifest path for capture commands, plan output path, or manifest list for publish command.
+    required: false
+    default: ""
+  format:
+    description: "Publish format for publish command: pr-comment, readme, gallery, or release-note."
+    required: false
+    default: pr-comment
+  viewport:
+    description: Viewport preset or WIDTHxHEIGHT.
+    required: false
+  device:
+    description: Playwright device name.
+    required: false
+  duration:
+    description: Video or GIF duration in seconds.
+    required: false
+  serve:
+    description: Command used to start a local app before capture.
+    required: false
+  serve-url:
+    description: URL to wait for after starting the local app.
+    required: false
+  install-browsers:
+    description: Install Playwright Chromium and FFmpeg before running.
+    required: false
+    default: "true"
+  build:
+    description: Build the monorepo before running the CLI.
+    required: false
+    default: "true"
+
+outputs:
+  output:
+    description: The resolved output path, when the selected command writes one.
+    value: ${{ steps.run-just-preview.outputs.output }}
+  manifest:
+    description: The resolved manifest or plan path, when applicable.
+    value: ${{ steps.run-just-preview.outputs.manifest }}
+
+runs:
+  using: composite
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10.33.4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile
+
+    - name: Install Playwright Chromium and FFmpeg
+      if: ${{ inputs.install-browsers == 'true' }}
+      shell: bash
+      run: pnpm exec playwright install chromium ffmpeg
+
+    - name: Build Just-Preview monorepo
+      if: ${{ inputs.build == 'true' }}
+      shell: bash
+      run: pnpm build
+
+    - name: Run Just-Preview
+      id: run-just-preview
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        command="${{ inputs.command }}"
+        resolved_out="${{ inputs.out }}"
+        resolved_manifest="${{ inputs.manifest }}"
+
+        if [ -z "$resolved_out" ]; then
+          case "$command" in
+            thumbnail) resolved_out="outputs/cover.png" ;;
+            video) resolved_out="outputs/preview.mp4" ;;
+            gif) resolved_out="outputs/preview.gif" ;;
+            publish) resolved_out="outputs/pr-comment.md" ;;
+            *) resolved_out="" ;;
+          esac
+        fi
+
+        if [ -z "$resolved_manifest" ]; then
+          case "$command" in
+            thumbnail) resolved_manifest="outputs/cover.manifest.json" ;;
+            video) resolved_manifest="outputs/preview.manifest.json" ;;
+            gif) resolved_manifest="outputs/gif.manifest.json" ;;
+            recipe) resolved_manifest="outputs/recipe.manifest.json" ;;
+            plan) resolved_manifest="outputs/plan.json" ;;
+            *) resolved_manifest="" ;;
+          esac
+        fi
+
+        args=("$command")
+
+        if [ -n "${{ inputs.config }}" ]; then args+=(--config "${{ inputs.config }}"); fi
+        if [ -n "${{ inputs.url }}" ]; then args+=(--url "${{ inputs.url }}"); fi
+        if [ -n "${{ inputs.file }}" ]; then args+=(--file "${{ inputs.file }}"); fi
+        if [ -n "${{ inputs.viewport }}" ]; then args+=(--viewport "${{ inputs.viewport }}"); fi
+        if [ -n "${{ inputs.device }}" ]; then args+=(--device "${{ inputs.device }}"); fi
+        if [ -n "${{ inputs.duration }}" ]; then args+=(--duration "${{ inputs.duration }}"); fi
+        if [ -n "${{ inputs.serve }}" ]; then args+=(--serve "${{ inputs.serve }}"); fi
+        if [ -n "${{ inputs.serve-url }}" ]; then args+=(--serve-url "${{ inputs.serve-url }}"); fi
+
+        case "$command" in
+          recipe)
+            if [ -n "${{ inputs.recipe }}" ]; then args+=("${{ inputs.recipe }}"); fi
+            if [ -n "$resolved_manifest" ]; then args+=(--manifest "$resolved_manifest"); fi
+            ;;
+          publish)
+            if [ -n "$resolved_manifest" ]; then args+=(--manifest "$resolved_manifest"); fi
+            if [ -n "${{ inputs.format }}" ]; then args+=(--format "${{ inputs.format }}"); fi
+            if [ -n "$resolved_out" ]; then args+=(--out "$resolved_out"); fi
+            ;;
+          validate)
+            if [ -n "${{ inputs.recipe }}" ]; then args+=("${{ inputs.recipe }}"); fi
+            ;;
+          plan)
+            args+=(video)
+            if [ -n "$resolved_manifest" ]; then args+=(--manifest "$resolved_manifest"); fi
+            ;;
+          *)
+            if [ -n "$resolved_out" ]; then args+=(--out "$resolved_out"); fi
+            if [ -n "$resolved_manifest" ]; then args+=(--manifest "$resolved_manifest"); fi
+            ;;
+        esac
+
+        printf 'output=%s\n' "$resolved_out" >> "$GITHUB_OUTPUT"
+        printf 'manifest=%s\n' "$resolved_manifest" >> "$GITHUB_OUTPUT"
+
+        pnpm just-preview "${args[@]}"

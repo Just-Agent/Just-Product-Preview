@@ -1,0 +1,13 @@
+{
+  "name": "just-preview-example-local-app",
+  "version": "0.4.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "mkdir -p dist && echo local-app example > dist/README.txt",
+    "typecheck": "echo local-app typecheck",
+    "lint": "echo local-app lint",
+    "test": "echo local-app test"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "just-preview-example-basic-url",
+  "version": "0.4.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "mkdir -p dist && echo basic-url example > dist/README.txt",
+    "typecheck": "echo basic-url typecheck",
+    "lint": "echo basic-url lint",
+    "test": "echo basic-url test"
+  }
+}

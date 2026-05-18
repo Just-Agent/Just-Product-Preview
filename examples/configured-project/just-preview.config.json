@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "outputDir": "outputs",
+    "viewport": "desktop",
+    "waitUntil": "load",
+    "waitForTimeout": 300
+  },
+  "thumbnail": {
+    "file": "./examples/configured-project/index.html",
+    "output": "outputs/configured-cover.png",
+    "fullPage": false,
+    "quality": 90
+  },
+  "video": {
+    "file": "./examples/configured-project/index.html",
+    "output": "outputs/configured-preview.webm",
+    "duration": 2,
+    "autoScroll": true,
+    "scrollBy": 260,
+    "scrollIntervalMs": 500,
+    "recordingsDir": "recordings"
+  },
+  "gif": {
+    "file": "./examples/configured-project/index.html",
+    "output": "outputs/configured-preview.gif",
+    "duration": 2,
+    "gifFps": 12,
+    "gifWidth": 960
+  }
+}

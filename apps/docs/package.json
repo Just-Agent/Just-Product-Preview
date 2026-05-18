@@ -1,0 +1,15 @@
+{
+  "name": "@just-agent/preview-docs",
+  "version": "0.4.1",
+  "private": true,
+  "description": "Documentation placeholder for Just-Preview.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs",
+    "typecheck": "node scripts/build.mjs --check",
+    "lint": "node scripts/build.mjs --check",
+    "test": "node scripts/build.mjs --check",
+    "clean": "rm -rf dist"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "serveCommand": "node server.mjs",
+  "serveUrl": "http://127.0.0.1:4177",
+  "serveCwd": ".",
+  "serveSilent": true,
+  "output": "outputs/local-app-recipe.mp4",
+  "viewport": "desktop",
+  "duration": 1,
+  "steps": [
+    { "type": "wait", "ms": 700 },
+    { "type": "click", "selector": "[data-preview='demo-button']" },
+    { "type": "scroll", "to": 720, "duration": 1200 },
+    { "type": "wait", "ms": 500 },
+    { "type": "scroll", "to": 0, "duration": 900 }
+  ]
+}

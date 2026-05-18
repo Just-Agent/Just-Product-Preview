@@ -1,0 +1,10 @@
+{
+  "url": "https://example.com",
+  "output": "outputs/mobile-preview.mp4",
+  "device": "iPhone 15 Pro",
+  "duration": 1,
+  "steps": [
+    { "type": "wait", "ms": 1000 },
+    { "type": "scroll", "by": 500, "duration": 1000 }
+  ]
+}

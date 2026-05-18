@@ -1,0 +1,12 @@
+{
+  "name": "just-preview-example-github-action",
+  "version": "0.4.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "mkdir -p dist && echo github-action example > dist/README.txt",
+    "typecheck": "echo github-action typecheck",
+    "lint": "echo github-action lint",
+    "test": "echo github-action test"
+  }
+}

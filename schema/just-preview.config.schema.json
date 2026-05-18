@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://just-agent.github.io/Just-Product-Preview/schema/just-preview.config.schema.json",
+  "title": "Just-Preview Config",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "defaults": {
+      "$ref": "#/$defs/baseOptions"
+    },
+    "thumbnail": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseOptions"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fullPage": {
+              "type": "boolean"
+            },
+            "omitBackground": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            }
+          }
+        }
+      ]
+    },
+    "video": {
+      "$ref": "#/$defs/videoOptions"
+    },
+    "gif": {
+      "$ref": "#/$defs/videoOptions"
+    },
+    "recipe": {
+      "$ref": "#/$defs/videoOptions"
+    },
+    "publish": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "manifest": {
+          "type": "string"
+        },
+        "manifests": {
+          "type": "string"
+        },
+        "format": {
+          "enum": [
+            "pr-comment",
+            "readme",
+            "gallery",
+            "release-note"
+          ]
+        },
+        "output": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "baseUrl": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "sha": {
+          "type": "string"
+        },
+        "workflowRunUrl": {
+          "type": "string"
+        },
+        "includeTable": {
+          "type": "boolean"
+        },
+        "includeHtmlVideo": {
+          "type": "boolean"
+        },
+        "headingLevel": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 6
+        }
+      }
+    }
+  },
+  "$defs": {
+    "viewport": {
+      "oneOf": [
+        {
+          "enum": [
+            "desktop",
+            "mobile",
+            "tablet",
+            "wide",
+            "square"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "width",
+            "height"
+          ],
+          "properties": {
+            "width": {
+              "type": "number",
+              "minimum": 1
+            },
+            "height": {
+              "type": "number",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "baseOptions": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "html": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        },
+        "outputDir": {
+          "type": "string"
+        },
+        "viewport": {
+          "$ref": "#/$defs/viewport"
+        },
+        "device": {
+          "type": "string"
+        },
+        "waitUntil": {
+          "enum": [
+            "load",
+            "domcontentloaded",
+            "networkidle",
+            "commit"
+          ]
+        },
+        "timeout": {
+          "type": "number",
+          "minimum": 0
+        },
+        "waitForTimeout": {
+          "type": "number",
+          "minimum": 0
+        },
+        "serveCommand": {
+          "type": "string"
+        },
+        "serveUrl": {
+          "type": "string"
+        },
+        "serveCwd": {
+          "type": "string"
+        },
+        "serveTimeout": {
+          "type": "number",
+          "minimum": 1
+        },
+        "serveInterval": {
+          "type": "number",
+          "minimum": 1
+        },
+        "serveProbeMethod": {
+          "enum": [
+            "GET",
+            "HEAD"
+          ]
+        },
+        "serveSilent": {
+          "type": "boolean"
+        },
+        "serveGraceMs": {
+          "type": "number",
+          "minimum": 1
+        },
+        "serveKillSignal": {
+          "type": "string",
+          "description": "Signal used to stop the local preview server, for example SIGTERM."
+        },
+        "userAgent": {
+          "type": "string"
+        },
+        "executablePath": {
+          "type": "string",
+          "description": "Optional Chromium/Chrome executable path. Env fallback: JUST_PREVIEW_CHROMIUM_EXECUTABLE."
+        }
+      }
+    },
+    "videoOptions": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseOptions"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "duration": {
+              "type": "number",
+              "minimum": 0
+            },
+            "durationMs": {
+              "type": "number",
+              "minimum": 0
+            },
+            "autoScroll": {
+              "type": "boolean"
+            },
+            "scrollBy": {
+              "type": "number"
+            },
+            "scrollIntervalMs": {
+              "type": "number",
+              "minimum": 1
+            },
+            "recordingsDir": {
+              "type": "string"
+            },
+            "keepRawWebm": {
+              "type": "boolean"
+            },
+            "fps": {
+              "type": "number",
+              "minimum": 1
+            },
+            "crf": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 51
+            },
+            "gifFps": {
+              "type": "number",
+              "minimum": 1
+            },
+            "gifWidth": {
+              "type": "number",
+              "minimum": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}
