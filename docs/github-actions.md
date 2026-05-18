@@ -21,6 +21,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm browsers:install
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - run: pnpm build
       - run: pnpm just-preview doctor
       - run: pnpm just-preview validate --config just-preview.config.example.json recipes/landing-page.json

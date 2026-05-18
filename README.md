@@ -62,10 +62,16 @@ pnpm install
 pnpm build
 ```
 
-Install the browser and video runtime used by Playwright:
+Install the browser runtime used by Playwright:
 
 ```bash
 pnpm browsers:install
+```
+
+For MP4, MOV, and GIF conversion, install a full system FFmpeg binary as well. On Ubuntu runners:
+
+```bash
+sudo apt-get update && sudo apt-get install -y ffmpeg
 ```
 
 Check the environment:

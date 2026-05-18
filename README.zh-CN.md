@@ -64,10 +64,16 @@ pnpm install
 pnpm build
 ```
 
-安装 Playwright 浏览器与 FFmpeg：
+安装 Playwright 浏览器运行时：
 
 ```bash
 pnpm browsers:install
+```
+
+如果要生成 MP4、MOV 或 GIF，还需要系统级 FFmpeg。Ubuntu runner 示例：
+
+```bash
+sudo apt-get update && sudo apt-get install -y ffmpeg
 ```
 
 检查环境：

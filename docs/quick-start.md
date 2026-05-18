@@ -5,6 +5,7 @@ Just-Preview turns a URL, local HTML file, or frontend app into README-ready pre
 ```bash
 pnpm install
 pnpm browsers:install
+sudo apt-get update && sudo apt-get install -y ffmpeg
 pnpm build
 pnpm just-preview doctor
 ```

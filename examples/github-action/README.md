@@ -21,6 +21,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm browsers:install
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
       - run: pnpm build
       - run: pnpm just-preview thumbnail --url https://example.com --out artifacts/cover.png
       - run: pnpm just-preview video --url https://example.com --out artifacts/preview.mp4 --duration 8
