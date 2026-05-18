@@ -2,6 +2,7 @@ import { execFile } from "node:child_process";
 import { access } from "node:fs/promises";
 import { promisify } from "node:util";
 import { chromium } from "playwright";
+import { resolveFfmpegExecutable } from "./ffmpeg.js";
 
 const execFileAsync = promisify(execFile);
 
@@ -49,19 +50,28 @@ function checkNodeVersion(): DoctorCheck {
 }
 
 async function checkFfmpeg(): Promise<DoctorCheck> {
+  const executable = await resolveFfmpegExecutable();
+  if (!executable) {
+    return {
+      name: "FFmpeg",
+      status: "warn",
+      message: "FFmpeg was not found on PATH or in the Playwright browser cache. MP4, MOV, and GIF conversion will fail; WebM output can still work."
+    };
+  }
+
   try {
-    const result = await execFileAsync("ffmpeg", ["-version"], { timeout: 5_000 });
+    const result = await execFileAsync(executable, ["-version"], { timeout: 5_000 });
     const firstLine = result.stdout.split("\n")[0] ?? "ffmpeg is available";
     return {
       name: "FFmpeg",
       status: "ok",
-      message: firstLine
+      message: executable === "ffmpeg" ? firstLine : `${firstLine} (${executable})`
     };
   } catch {
     return {
       name: "FFmpeg",
       status: "warn",
-      message: "FFmpeg was not found on PATH. MP4, MOV, and GIF conversion will fail; WebM output can still work."
+      message: `FFmpeg executable could not be run at ${executable}. MP4, MOV, and GIF conversion will fail; WebM output can still work.`
     };
   }
 }

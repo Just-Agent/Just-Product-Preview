@@ -1,7 +1,7 @@
 import { copyFile } from "node:fs/promises";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
-import { getLowerExtension, prepareOutputFile } from "@just-agent/preview-core";
+import { getLowerExtension, prepareOutputFile, resolveFfmpegExecutable } from "@just-agent/preview-core";
 
 const execFileAsync = promisify(execFile);
 
@@ -78,8 +78,15 @@ async function convertToGif(options: ConvertVideoOptions): Promise<void> {
 }
 
 async function runFfmpeg(args: string[], ext: string): Promise<void> {
+  const executable = await resolveFfmpegExecutable();
+  if (!executable) {
+    throw new Error(
+      `Failed to convert recorded WebM to ${ext}. Install FFmpeg, run pnpm browsers:install, set JUST_PREVIEW_FFMPEG_EXECUTABLE, or output .webm instead.`
+    );
+  }
+
   try {
-    await execFileAsync("ffmpeg", args);
+    await execFileAsync(executable, args);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     throw new Error(
