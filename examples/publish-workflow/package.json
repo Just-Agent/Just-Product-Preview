@@ -4,7 +4,7 @@
   "version": "0.4.1",
   "description": "Sample publish workflow for Just-Preview manifests.",
   "scripts": {
-    "build": "mkdir -p dist && echo publish-workflow example > dist/README.txt",
+    "build": "node ../../scripts/write-example-dist.mjs publish-workflow",
     "typecheck": "echo publish-workflow typecheck",
     "lint": "echo publish-workflow lint",
     "test": "echo publish-workflow test"

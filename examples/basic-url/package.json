@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && echo basic-url example > dist/README.txt",
+    "build": "node ../../scripts/write-example-dist.mjs basic-url",
     "typecheck": "echo basic-url typecheck",
     "lint": "echo basic-url lint",
     "test": "echo basic-url test"

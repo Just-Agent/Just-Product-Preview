@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && echo local-html example > dist/README.txt",
+    "build": "node ../../scripts/write-example-dist.mjs local-html",
     "typecheck": "echo local-html typecheck",
     "lint": "echo local-html lint",
     "test": "echo local-html test"

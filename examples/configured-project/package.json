@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && echo configured-project example > dist/README.txt",
+    "build": "node ../../scripts/write-example-dist.mjs configured-project",
     "typecheck": "echo configured-project typecheck",
     "lint": "echo configured-project lint",
     "test": "echo configured-project test"

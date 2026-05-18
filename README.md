@@ -65,7 +65,7 @@ pnpm build
 Install the browser and video runtime used by Playwright:
 
 ```bash
-pnpm exec playwright install chromium ffmpeg
+pnpm browsers:install
 ```
 
 Check the environment:

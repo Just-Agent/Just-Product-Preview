@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && echo github-action example > dist/README.txt",
+    "build": "node ../../scripts/write-example-dist.mjs github-action",
     "typecheck": "echo github-action typecheck",
     "lint": "echo github-action lint",
     "test": "echo github-action test"

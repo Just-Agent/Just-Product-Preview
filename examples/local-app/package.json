@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "build": "mkdir -p dist && echo local-app example > dist/README.txt",
+    "build": "node ../../scripts/write-example-dist.mjs local-app",
     "typecheck": "echo local-app typecheck",
     "lint": "echo local-app lint",
     "test": "echo local-app test"

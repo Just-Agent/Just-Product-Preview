@@ -97,7 +97,7 @@ async function checkPlaywrightChromium(): Promise<DoctorCheck> {
     return {
       name: "Playwright Chromium",
       status: "error",
-      message: "Chromium browser binaries are missing. Run: pnpm exec playwright install chromium, or set JUST_PREVIEW_CHROMIUM_EXECUTABLE to a local Chromium/Chrome binary."
+      message: "Chromium browser binaries are missing. Run: pnpm --filter @just-agent/preview-core exec playwright install chromium, or set JUST_PREVIEW_CHROMIUM_EXECUTABLE to a local Chromium/Chrome binary."
     };
   }
 }

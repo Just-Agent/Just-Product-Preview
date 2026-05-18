@@ -21,7 +21,7 @@ jobs:
       - run: pnpm validate:json
       - run: pnpm release:check
       - run: pnpm release:checklist
-      - run: pnpm exec playwright install chromium ffmpeg
+      - run: pnpm browsers:install
       - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm lint

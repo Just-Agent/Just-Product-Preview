@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "mkdir -p dist && echo recipe-demo example > dist/README.txt",
+    "build": "node ../../scripts/write-example-dist.mjs recipe-demo",
     "typecheck": "echo recipe-demo typecheck",
     "lint": "echo recipe-demo lint",
     "test": "echo recipe-demo test"

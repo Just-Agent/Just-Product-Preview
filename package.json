@@ -21,6 +21,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
+    "browsers:install": "pnpm --filter @just-agent/preview-core exec playwright install chromium ffmpeg",
     "test": "turbo test",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",

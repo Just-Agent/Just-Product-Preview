@@ -31,7 +31,7 @@ pnpm test
 For browser smoke tests, install Playwright browser assets first:
 
 ```bash
-pnpm exec playwright install chromium ffmpeg
+pnpm browsers:install
 pnpm smoke:publish
 pnpm smoke:action-inputs
 pnpm smoke:local-html

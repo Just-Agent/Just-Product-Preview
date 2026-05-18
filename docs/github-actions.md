@@ -20,7 +20,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install chromium ffmpeg
+      - run: pnpm browsers:install
       - run: pnpm build
       - run: pnpm just-preview doctor
       - run: pnpm just-preview validate --config just-preview.config.example.json recipes/landing-page.json

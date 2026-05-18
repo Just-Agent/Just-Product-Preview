@@ -84,7 +84,7 @@ runs:
     - name: Install Playwright Chromium and FFmpeg
       if: ${{ inputs.install-browsers == 'true' }}
       shell: bash
-      run: pnpm exec playwright install chromium ffmpeg
+      run: pnpm browsers:install
 
     - name: Build Just-Preview monorepo
       if: ${{ inputs.build == 'true' }}

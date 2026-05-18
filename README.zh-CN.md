@@ -67,7 +67,7 @@ pnpm build
 安装 Playwright 浏览器与 FFmpeg：
 
 ```bash
-pnpm exec playwright install chromium ffmpeg
+pnpm browsers:install
 ```
 
 检查环境：

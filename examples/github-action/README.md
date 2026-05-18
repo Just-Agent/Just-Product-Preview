@@ -20,7 +20,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install chromium ffmpeg
+      - run: pnpm browsers:install
       - run: pnpm build
       - run: pnpm just-preview thumbnail --url https://example.com --out artifacts/cover.png
       - run: pnpm just-preview video --url https://example.com --out artifacts/preview.mp4 --duration 8
