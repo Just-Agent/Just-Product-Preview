@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./docs/readme-assets/logo.svg" alt="Just-Product-Preview logo" width="340" />
+  <img src="./docs/readme-assets/logo.svg" alt="Just-Product-Preview logo" width="240" />
   <h1>Just-Product-Preview</h1>
   <p><strong>Agent-native preview assets for README, PR, release, and docs workflows.</strong></p>
   <p>Turn local apps, URLs, and HTML files into screenshots, videos, GIFs, manifests, and publish-ready Markdown.</p>
@@ -319,7 +319,7 @@ CI runs the same release checks, installs Playwright Chromium and system FFmpeg,
 
 | Asset | Path | Purpose |
 | --- | --- | --- |
-| Product wordmark | [docs/readme-assets/logo.svg](./docs/readme-assets/logo.svg) | First-viewport project identity. |
+| Product mark | [docs/readme-assets/logo.svg](./docs/readme-assets/logo.svg) | First-viewport compact project identity. |
 | Workflow preview | [docs/assets/just-product-preview-flow.svg](./docs/assets/just-product-preview-flow.svg) | Visual explanation of inputs, CLI commands, and outputs. |
 
 ## Release Status

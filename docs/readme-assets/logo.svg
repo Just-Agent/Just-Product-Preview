@@ -1,45 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="280" viewBox="0 0 760 280" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">Just-Product-Preview logo</title>
-  <desc id="desc">A compact product wordmark showing a browser preview, terminal prompt, play frame, and published artifact path.</desc>
+  <desc id="desc">A compact preview toolkit mark with a browser window, play frame, capture path, and artifact tiles.</desc>
   <defs>
-    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#F8FAFC"/>
-      <stop offset="100%" stop-color="#E0F2FE"/>
+    <linearGradient id="bg" x1="64" x2="448" y1="64" y2="448" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#e0f2fe"/>
     </linearGradient>
-    <linearGradient id="mark" x1="0" x2="1">
-      <stop offset="0%" stop-color="#16A34A"/>
-      <stop offset="100%" stop-color="#2563EB"/>
+    <linearGradient id="play" x1="316" x2="422" y1="144" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#2563eb"/>
     </linearGradient>
-    <filter id="soft-shadow" x="-10%" y="-20%" width="120%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="15" flood-color="#0F172A" flood-opacity="0.16"/>
+    <linearGradient id="path" x1="136" x2="382" y1="302" y2="302" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.5" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.18"/>
     </filter>
   </defs>
 
-  <rect x="30" y="32" width="700" height="216" rx="30" fill="url(#panel)" filter="url(#soft-shadow)"/>
-  <rect x="55" y="57" width="196" height="166" rx="20" fill="#0F172A"/>
-  <rect x="55" y="57" width="196" height="40" rx="20" fill="#1E293B"/>
-  <rect x="74" y="75" width="11" height="11" rx="5.5" fill="#F97316"/>
-  <rect x="94" y="75" width="11" height="11" rx="5.5" fill="#FACC15"/>
-  <rect x="114" y="75" width="11" height="11" rx="5.5" fill="#22C55E"/>
+  <rect x="42" y="42" width="428" height="428" rx="108" fill="url(#bg)"/>
+  <circle cx="396" cy="120" r="44" fill="#38bdf8" opacity="0.14"/>
+  <circle cx="124" cy="386" r="58" fill="#22c55e" opacity="0.12"/>
 
-  <path d="M86 133 L110 151 L86 169" fill="none" stroke="#38BDF8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="126" y="144" width="75" height="12" rx="6" fill="#22C55E"/>
-  <rect x="126" y="174" width="96" height="10" rx="5" fill="#64748B"/>
-  <rect x="86" y="194" width="72" height="10" rx="5" fill="#64748B"/>
+  <g filter="url(#shadow)">
+    <rect x="92" y="112" width="216" height="178" rx="34" fill="#0f172a"/>
+    <rect x="92" y="112" width="216" height="44" rx="34" fill="#1e293b"/>
+    <circle cx="122" cy="134" r="7" fill="#f97316"/>
+    <circle cx="146" cy="134" r="7" fill="#facc15"/>
+    <circle cx="170" cy="134" r="7" fill="#22c55e"/>
+    <path d="M128 202l28 22-28 22" fill="none" stroke="#38bdf8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="178" y="215" width="86" height="14" rx="7" fill="#22c55e"/>
+    <rect x="126" y="258" width="74" height="10" rx="5" fill="#64748b"/>
+    <rect x="214" y="258" width="52" height="10" rx="5" fill="#64748b"/>
+  </g>
 
-  <rect x="206" y="119" width="88" height="88" rx="22" fill="url(#mark)" stroke="#F8FAFC" stroke-width="10"/>
-  <path d="M237 144 L267 163 L237 182 Z" fill="#FFFFFF"/>
-  <path d="M294 163 C332 163 356 163 390 163" fill="none" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
-  <path d="M378 148 L395 163 L378 178" fill="none" stroke="#2563EB" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M308 202h28" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round"/>
 
-  <text x="330" y="120" fill="#0F172A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">Just-Product-Preview</text>
-  <text x="333" y="158" fill="#334155" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">Preview what your Agent built.</text>
+  <g filter="url(#shadow)">
+    <rect x="336" y="154" width="96" height="96" rx="30" fill="url(#play)" stroke="#f8fafc" stroke-width="10"/>
+    <path d="M374 184l34 22-34 22z" fill="#ffffff"/>
+  </g>
 
-  <g transform="translate(333 181)" font-family="Consolas, Menlo, monospace" font-size="17" font-weight="700">
-    <rect width="310" height="34" rx="12" fill="#FFFFFF" stroke="#CBD5E1"/>
-    <text x="18" y="23" fill="#16A34A">thumbnail</text>
-    <text x="118" y="23" fill="#2563EB">video</text>
-    <text x="185" y="23" fill="#9333EA">gif</text>
-    <text x="232" y="23" fill="#F97316">publish</text>
+  <path d="M136 326c56-52 116-52 172 0 20 18 42 26 68 26" fill="none" stroke="url(#path)" stroke-width="14" stroke-linecap="round"/>
+
+  <g filter="url(#shadow)">
+    <rect x="110" y="334" width="58" height="48" rx="16" fill="#ecfeff" stroke="#38bdf8" stroke-width="6"/>
+    <rect x="196" y="352" width="58" height="48" rx="16" fill="#f0fdf4" stroke="#22c55e" stroke-width="6"/>
+    <rect x="282" y="334" width="58" height="48" rx="16" fill="#faf5ff" stroke="#9333ea" stroke-width="6"/>
+    <rect x="368" y="352" width="58" height="48" rx="16" fill="#fff7ed" stroke="#f97316" stroke-width="6"/>
   </g>
 </svg>
