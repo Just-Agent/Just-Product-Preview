@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="280" viewBox="0 0 760 280" role="img" aria-labelledby="title desc">
+  <title id="title">Just-Product-Preview logo</title>
+  <desc id="desc">A compact product wordmark showing a browser preview, terminal prompt, play frame, and published artifact path.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#E0F2FE"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" x2="1">
+      <stop offset="0%" stop-color="#16A34A"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-10%" y="-20%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="15" flood-color="#0F172A" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect x="30" y="32" width="700" height="216" rx="30" fill="url(#panel)" filter="url(#soft-shadow)"/>
+  <rect x="55" y="57" width="196" height="166" rx="20" fill="#0F172A"/>
+  <rect x="55" y="57" width="196" height="40" rx="20" fill="#1E293B"/>
+  <rect x="74" y="75" width="11" height="11" rx="5.5" fill="#F97316"/>
+  <rect x="94" y="75" width="11" height="11" rx="5.5" fill="#FACC15"/>
+  <rect x="114" y="75" width="11" height="11" rx="5.5" fill="#22C55E"/>
+
+  <path d="M86 133 L110 151 L86 169" fill="none" stroke="#38BDF8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="126" y="144" width="75" height="12" rx="6" fill="#22C55E"/>
+  <rect x="126" y="174" width="96" height="10" rx="5" fill="#64748B"/>
+  <rect x="86" y="194" width="72" height="10" rx="5" fill="#64748B"/>
+
+  <rect x="206" y="119" width="88" height="88" rx="22" fill="url(#mark)" stroke="#F8FAFC" stroke-width="10"/>
+  <path d="M237 144 L267 163 L237 182 Z" fill="#FFFFFF"/>
+  <path d="M294 163 C332 163 356 163 390 163" fill="none" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M378 148 L395 163 L378 178" fill="none" stroke="#2563EB" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="330" y="120" fill="#0F172A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">Just-Product-Preview</text>
+  <text x="333" y="158" fill="#334155" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">Preview what your Agent built.</text>
+
+  <g transform="translate(333 181)" font-family="Consolas, Menlo, monospace" font-size="17" font-weight="700">
+    <rect width="310" height="34" rx="12" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="18" y="23" fill="#16A34A">thumbnail</text>
+    <text x="118" y="23" fill="#2563EB">video</text>
+    <text x="185" y="23" fill="#9333EA">gif</text>
+    <text x="232" y="23" fill="#F97316">publish</text>
+  </g>
+</svg>
